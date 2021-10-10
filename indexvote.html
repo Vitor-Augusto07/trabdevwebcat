@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>CAT JS</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons' rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons' rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: OnePage - v2.2.2
+  * Template URL: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+      <img src="assets/img/icone-60-60.png" alt="" class="img-fluid">
+      <h1 class="logo mr-auto"><a href="index.html">CATS JS</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav class="nav-menu d-none d-lg-block">
+
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+      <div class="row justify-content-center">
+        <div class="col-xl-7 col-lg-9 text-center">
+          <img src="assets/img/logo-450-250.png" class="testimonial-img" alt="">
+          <h1>Vote No seu Gato Favorito</h1>
+        </div>
+      </div>
+      <div class="text-center">
+        
+ 
+    </div>
+  </section><!-- Não Alterar -->
+ 
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+<div id="app">
+  <v-app>
+    <v-content>
+      <v-container>
+
+          <v-layout >
+              
+      <v-flex xs12 sm6 md3>
+          <v-text-field
+            label="sub_id"
+            placeholder=""
+            v-model="sub_id"
+          ></v-text-field>
+        </v-flex>
+
+  <v-btn color="green" large @click="voteUp" >
+      <v-icon>thumb_up</v-icon>&nbsp; Love it</v-btn>
+<v-btn color="red" large @click="voteDown" >
+      <v-icon>thumb_down</v-icon>&nbsp; Nope it</v-btn>
+
+          </v-layout>
+
+          <v-layout row wrap>
+              <v-flex xs12 >
+              <v-card flat tile class="d-flex">
+                  <v-img :src="image.url" aspect-ratio="1">
+                  </v-img>
+              </v-card>
+              </v-flex>
+          </v-layout>
+
+
+          <v-layout row wrap>
+              <v-flex xs12 >
+<v-data-table
+:headers="headers"
+:items="votes"
+class="elevation-1"
+>
+<template slot="items" slot-scope="props">
+  <td>{{ props.item.created_at }}</td>
+  <td class="text-xs-left">{{ props.item.image_id }}</td>
+  <td class="text-xs-left">{{ props.item.value }}</td>
+  <td>{{ props.item.sub_id }}</td>
+  <td>{{ props.item.country_code }}</td>
+</template>
+</v-data-table>
+
+</v-flex>
+</v-layout>
+      </v-container>
+    </v-content>
+  </v-app>
+</div>
+
+<script>
+  new Vue({ 
+      el: '#app',
+      vuetify: new Vuetify(),
+      data: {
+        sub_id: "User-123",
+        image:{},
+        votes:[],
+          headers: [
+          { text: 'date' },
+          { text: 'image_id' },
+          { text: 'value' },
+          { text: 'sub_id' },
+          { text: 'country' }
+        ],
+      },
+      created(){
+          this.getImage();
+          this.getVotes();
+      } ,
+      methods:{
+          async getImage()
+          {
+              try{
+                  axios.defaults.headers.common['x-api-key'] = "033b8216-4994-4948-8243-22a337c8f12a" 
+
+                  let response = await axios.get('https://api.thecatapi.com/v1/images/search', { params: { limit:1, size:"Small" } } ) 
+                  
+                  this.image = response.data[0]
+
+                  console.log("-- Image from TheCatAPI.com")
+                  console.log("id:", this.image.id)
+                  console.log("url:", this.image.url)
+
+              }catch(err){
+                  console.log(err)
+              }
+          },
+          async voteUp(){
+            let body = {
+                image_id: this.image.id,
+                sub_id: this.sub_id,
+                value: 1 
+            }
+            let response = await axios.post('https://api.thecatapi.com/v1/votes', body )
+                  
+            await this.getImage();
+            await this.getVotes();
+          },
+          async voteDown(){
+
+            let body = {
+                image_id: this.image.id,
+                sub_id: this.sub_id,
+                value: 0 
+            }
+            let response = await axios.post('https://api.thecatapi.com/v1/votes', body ) 
+                  
+            await this.getImage();
+            await this.getVotes();
+          },
+          async getVotes()
+          {
+
+            let response = await axios.get('https://api.thecatapi.com/v1/votes', { params: { order:"DESC", limit:25 } } ) 
+            
+            response.data.forEach(element => {
+              
+              element.created_at = new Date(element.created_at).toJSON().slice(0,10)
+            });
+
+            this.votes = response.data;
+          }
+      }
+  })
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container d-md-flex py-4">
+
+      <div class="mr-md-auto text-center text-md-left">
+        <div class="copyright">
+          &copy; Copyright <strong><span>CATJS</span></strong>.Todos os Direitos Reservados Vitor Augusto Bordignon Zanchet / Sistemas de Informação / Diciplina Desenvolvimento Web.
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/ -->
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/counterup/counterup.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+
+
+
+  
+
+</body>
+
+</html>

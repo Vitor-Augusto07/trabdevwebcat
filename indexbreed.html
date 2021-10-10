@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>CAT JS</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons' rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons' rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: OnePage - v2.2.2
+  * Template URL: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+      <img src="assets/img/icone-60-60.png" alt="" class="img-fluid">
+      <h1 class="logo mr-auto"><a href="index.html">CATS JS</a></h1>
+
+
+      <nav class="nav-menu d-none d-lg-block">
+
+      </nav>
+
+    </div>
+  </header>
+
+
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+      <div class="row justify-content-center">
+        <div class="col-xl-7 col-lg-9 text-center">
+          <img src="assets/img/logo-450-250.png" class="testimonial-img" alt="">
+          <h1>Categoria de Gatos</h1>
+        </div>
+      </div>
+      <div class="text-center">
+        
+ 
+    </div>
+  </section><!-- Não Alterar -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+<div id="app">
+  <v-app>
+    <v-content>
+      <v-container>
+
+          <v-layout align-center justify-center>
+
+          <v-flex xs6>
+              <v-select :items="breeds"
+                      item-text="name"
+                      v-model="selected_breed"
+                      label="Breeds"
+                      return-object
+                      attach></v-select>
+          </v-flex>
+           
+          </v-layout>
+
+
+          <v-layout>
+              <v-flex xs12 sm8 offset-sm2>
+                <v-card>
+
+<v-carousel>
+    <v-carousel-item
+      v-for="(item,i) in images"
+      :key="i"
+      :src="item.url"
+    ></v-carousel-item>
+  </v-carousel>
+
+          
+                  <v-card-title primary-title>
+
+                  <div class="text-xs-center">
+                      <v-chip>
+                              <v-avatar>
+                                <img :src="country_flag_url" :alt="selected_breed.country_code">
+                              </v-avatar>
+                      {{selected_breed.origin}}</v-chip>
+                      <v-chip v-if="selected_breed.experimental==1">Experimental</v-chip>
+                      <v-chip v-if="selected_breed.rex==1">Rex</v-chip>
+                      <v-chip v-if="selected_breed.natural==1">Natural</v-chip>
+                      <v-chip v-if="selected_breed.rare==1">Rare</v-chip>
+                      <v-chip v-if="selected_breed.hairless==1">Hairless</v-chip>
+                      <v-chip v-if="selected_breed.suppressed_tail==1">Suppressed Tail</v-chip>
+                      <v-chip v-if="selected_breed.short_legs==1">Short Legs</v-chip>
+                      <v-chip v-if="selected_breed.hypoallergenic==1">Hypoallergenic</v-chip>
+                  </div>
+                    <div>
+                      <h3 class="headline mb-0">{{selected_breed.name}}</h3>
+                      <div>{{selected_breed.description}}</div>
+                      <div>---</div>
+                      <div><i>{{selected_breed.temperament}}</i></div>
+                    </div>
+                  </v-card-title>
+
+
+                      <v-list>
+                              <v-list-tile @click="">
+                    
+                                <v-list-tile-content>
+                                  
+                          Affection Level
+                                </v-list-tile-content>
+                    
+                                <v-list-tile-action>
+                                      <v-rating
+                                        v-model="selected_breed.affection_level "
+                                        readonly
+                                        size="18"
+                                      ></v-rating>
+                              </v-list-tile>
+                    
+                              <v-list-tile>
+                                <v-list-tile-content>
+                                      Adaptability
+                                </v-list-tile-content>
+                    
+                                <v-list-tile-action>
+                                      <v-rating
+                                      v-model="selected_breed.adaptability "
+                                      readonly
+                                      size="18"
+                                    ></v-rating>
+                              </v-list-tile>
+                    
+                              <v-list-tile>
+                              <v-list-tile-content>
+                                      Child Friendly
+                              </v-list-tile-content>
+                  
+                              <v-list-tile-action>
+                                      <v-rating
+                                      v-model="selected_breed.child_friendly "
+                                      readonly
+                                      size="18"
+                                  ></v-rating>
+                              </v-list-tile>
+
+                              <v-list-tile>
+                              <v-list-tile-content>
+                                      Dog Friendly
+                              </v-list-tile-content>
+                  
+                              <v-list-tile-action>
+                                      <v-rating
+                                      v-model="selected_breed.dog_friendly "
+                                      readonly
+                                      size="18"
+                                  ></v-rating>
+                              </v-list-tile>
+                              
+                              <v-list-tile>
+                                      <v-list-tile-content>
+                                              Energy Level
+                                      </v-list-tile-content>
+                          
+                                      <v-list-tile-action>
+                                              <v-rating
+                                              v-model="selected_breed.energy_level "
+                                              readonly
+                                              size="18"
+                                          ></v-rating>
+                                      </v-list-tile>
+
+                              <v-list-tile>
+                                      <v-list-tile-content>
+                                              Grooming
+                                      </v-list-tile-content>
+                          
+                                      <v-list-tile-action>
+                                              <v-rating
+                                              v-model="selected_breed.grooming "
+                                              readonly
+                                              size="18"
+                                          ></v-rating>
+                                      </v-list-tile>
+                              
+                              <v-list-tile>
+                                      <v-list-tile-content>
+                                              Health Issues
+                                      </v-list-tile-content>
+                          
+                                      <v-list-tile-action>
+                                              <v-rating
+                                              v-model="selected_breed.health_issues "
+                                              readonly
+                                              size="18"
+                                          ></v-rating>
+                                      </v-list-tile>
+
+                              <v-list-tile>
+                                      <v-list-tile-content>
+                                              Intelligence
+                                      </v-list-tile-content>
+                          
+                                      <v-list-tile-action>
+                                              <v-rating
+                                              v-model="selected_breed.intelligence "
+                                              readonly
+                                              size="18"
+                                          ></v-rating>
+                                      </v-list-tile>
+                              
+                              <v-list-tile>
+                                      <v-list-tile-content>
+                                          Shedding Level
+                                      </v-list-tile-content>
+                          
+                                      <v-list-tile-action>
+                                              <v-rating
+                                              v-model="selected_breed.shedding_level "
+                                              readonly
+                                              size="18"
+                                          ></v-rating>
+                                      </v-list-tile>
+                              
+                              <v-list-tile>
+                                      <v-list-tile-content>
+                                              Social Needs
+                                      </v-list-tile-content>
+                          
+                                      <v-list-tile-action>
+                                              <v-rating
+                                              v-model="selected_breed.social_needs "
+                                              readonly
+                                              size="18"
+                                          ></v-rating>
+                                      </v-list-tile>
+                                
+                              <v-list-tile>
+                                      <v-list-tile-content>
+                                              Stranger Friendly
+                                      </v-list-tile-content>
+                          
+                                      <v-list-tile-action>
+                                              <v-rating
+                                              v-model="selected_breed.stranger_friendly "
+                                              readonly
+                                              size="18"
+                                          ></v-rating>
+                                      </v-list-tile>    
+                              
+                              <v-list-tile>
+                                      <v-list-tile-content>
+                                              Vocalisation
+                                      </v-list-tile-content>
+                          
+                                      <v-list-tile-action>
+                                              <v-rating
+                                              v-model="selected_breed.vocalisation "
+                                              readonly
+                                              size="18"
+                                          ></v-rating>
+                                      </v-list-tile>  
+                                          
+                            </v-list>
+
+                  <v-card-actions>
+                    <v-btn :href="selected_breed.wikipedia_url" target="_blank" flat color="orange">Wikipedia</v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-flex>
+            </v-layout>
+      </v-container>
+    </v-content>
+  </v-app>
+</div>
+
+
+<script>
+  new Vue({ 
+      el: '#app',
+      vuetify: new Vuetify(),
+      data: {
+          country_flag_url:"",
+        images: [],
+        breeds:[],
+        selected_breed: {},
+        current_image: {}
+      },
+      created(){
+          this.getBreeds();
+      } ,
+      watch: {
+         
+          selected_breed: function()
+          {
+              console.log(this.selected_breed)
+
+              let country_code = this.selected_breed.country_code.toLowerCase();
+
+              this.country_flag_url = `https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/flags/1x1/${country_code}.svg`;
+              this.getImages();
+          }
+      },
+      methods:{
+
+          async getBreeds()
+          {
+              try{
+                  axios.defaults.headers.common['x-api-key'] = "033b8216-4994-4948-8243-22a337c8f12a" 
+                  
+                  let response = await axios.get('https://api.thecatapi.com/v1/breeds/' ) 
+                  this.breeds = response.data;
+                  console.log("-- ("+this.breeds.length +") Breeds from TheCatAPI.com")
+                  
+                  
+                  this.selected_breed = this.breeds[10]
+              }catch(err){
+                  console.log(err)
+              }
+          },
+          async getImages()
+          {
+              try{
+                  
+                  let query_params = {
+                      breed_ids: this.selected_breed.id,
+                      limit:8
+                  }
+
+                  let response = await axios.get('https://api.thecatapi.com/v1/images/search', { params: query_params} ) 
+                  
+                  this.pagination_count = response.headers['pagination-count'];
+                  this.images = response.data 
+                  this.current_image = this.images[0]
+
+                  
+
+                  console.log("-- ("+this.images.length +") Images from TheCatAPI.com")
+                  console.log( this.pagination_count ,'images available for this query.')
+                  
+              }catch(err){
+                  console.log(err)
+              }
+          }
+          
+      }
+  })
+</script>
+
+
+    <div class="container d-md-flex py-4">
+
+      <div class="mr-md-auto text-center text-md-left">
+        <div class="copyright">
+          &copy; Copyright <strong><span>CATJS</span></strong>.Todos os Direitos Reservados Vitor Augusto Bordignon Zanchet / Sistemas de Informação / Diciplina Desenvolvimento Web.
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/ -->
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/counterup/counterup.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+
+
+
+  
+
+</body>
+
+</html>
